@@ -1,202 +1,541 @@
-# ReactLab — 100 React Apps with Fluent UI, TypeScript, and Modern React
+# ReactLab — 100 React Apps with Fluent UI, TypeScript, Vite, and Modern React Architecture
 
 ## Overview
 
-ReactLab is a large hands-on learning repository focused on mastering modern React through the construction of **100 progressive React applications** using:
+ReactLab is a progressive enterprise-focused React learning repository designed to deeply teach modern React through the construction of **100 real React applications**.
 
-- React 19
-- TypeScript
-- Vite
-- Fluent UI
-- ESLint
-- Modern React patterns
-- Component-based architecture
+This repository is not focused on memorizing syntax.
 
-The main objective of this repository is not only to learn syntax, but to deeply understand the **mental model of React**, following the official documentation:
+Its objective is to internalize the **React mental model** described in the official React documentation and apply it progressively using:
 
-- https://react.dev/learn
-- https://developer.microsoft.com/en-us/fluentui#/controls/web
-- https://vite.dev/guide/
-- https://www.typescriptlang.org/docs/
+* React 19
+* TypeScript
+* Vite
+* Fluent UI
+* ESLint
+* Enterprise UI architecture
+* Microsoft-style design systems
+* Component-driven architecture
 
-This repository evolves progressively from:
+Official references:
 
-```txt
-Static UI
-→ Component composition
-→ Props
-→ Lists
-→ State
-→ Forms
-→ Events
-→ Effects
-→ API integration
-→ Architecture
-→ Enterprise dashboards
-→ Complete applications
-```
+* [React Learn Documentation](https://react.dev/learn?utm_source=chatgpt.com)
+* [React Reference](https://react.dev/reference/react?utm_source=chatgpt.com)
+* [Fluent UI Documentation](https://developer.microsoft.com/en-us/fluentui?utm_source=chatgpt.com#/controls/web)
+* [Vite Documentation](https://vite.dev/guide/?utm_source=chatgpt.com)
+* [TypeScript Documentation](https://www.typescriptlang.org/docs/?utm_source=chatgpt.com)
 
 ---
 
-# Main Goals
+# Main Objective
 
-## Learn React the Correct Way
+The purpose of this repository is to transform React learning from:
 
-The repository follows the official React mental model:
+```txt
+"How do I use React?"
+```
 
-- UI as a function of state
-- Pure components
-- Declarative rendering
-- State minimalism
-- Component composition
-- Derived UI
-- Proper use of hooks
-- Avoiding unnecessary effects
+into:
+
+```txt
+"How does React think?"
+```
+
+The repository progressively teaches:
+
+```txt
+Static UI
+→ JSX
+→ Components
+→ Props
+→ Rendering
+→ State
+→ Forms
+→ Events
+→ Derived State
+→ Effects
+→ APIs
+→ Context
+→ Reducers
+→ Architecture
+→ Enterprise Layouts
+→ Complete Applications
+```
+
+The learning philosophy is based on repetition and progressive architecture evolution.
+
+---
+
+# Core React Philosophy
+
+This repository follows the official React mental model:
+
+* UI is a function of state
+* Components are pure functions
+* Rendering is declarative
+* State should be minimal
+* Derived values should not become duplicated state
+* Effects should synchronize with external systems only
+* Composition is preferred over inheritance
+* Components should be small and reusable
+
+This repository intentionally avoids:
+
+* imperative DOM manipulation
+* unnecessary `useEffect`
+* jQuery-style thinking
+* giant monolithic components
 
 ---
 
 # Technology Stack
 
-| Technology | Purpose |
-|---|---|
-| React | UI library |
-| TypeScript | Static typing |
-| Vite | Development server and bundler |
-| Fluent UI | Microsoft design system |
-| ESLint | Code quality |
-| React Hooks | State and lifecycle |
-| CSS Flex/Grid | Layout |
-| JSX/TSX | Declarative UI |
+| Technology     | Purpose                               |
+| -------------- | ------------------------------------- |
+| React          | Declarative UI library                |
+| TypeScript     | Static typing and scalability         |
+| Vite           | Modern development server and bundler |
+| Fluent UI      | Microsoft enterprise design system    |
+| ESLint         | Code quality                          |
+| JSX/TSX        | Declarative UI syntax                 |
+| Flexbox/Grid   | Layout systems                        |
+| React Hooks    | State and lifecycle                   |
+| FluentProvider | Global design system provider         |
+
+---
+
+# Why This Repository Exists
+
+Modern React development is much more than rendering HTML.
+
+Professional frontend development requires understanding:
+
+* rendering flow
+* component architecture
+* JSX compilation
+* state-driven UI
+* composition
+* rendering performance
+* hooks
+* effects
+* TypeScript modeling
+* design systems
+* enterprise UI patterns
+
+This repository exists to make those concepts visible and understandable.
+
+The goal is to eliminate “black box React”.
+
+---
+
+# Development Environment
+
+## Required Tools
+
+* Node.js LTS
+* npm
+* Visual Studio Code
+
+Recommended VS Code extensions:
+
+* ESLint
+* Prettier
+* TypeScript Hero
+* Error Lens
+
+---
+
+# Creating a New App
+
+```powershell
+mkdir bloco01
+cd bloco01
+
+npm create vite@latest app01-hello-react-fluent -- --template react-ts
+
+cd app01-hello-react-fluent
+
+npm install
+
+npm install @fluentui/react-components @fluentui/react-icons
+```
+
+---
+
+# Running the Development Server
+
+```powershell
+npm run dev
+```
+
+Default Vite development server:
+
+```txt
+http://localhost:5173
+```
+
+---
+
+# Production Validation
+
+Every app must be validated with a production build.
+
+```powershell
+npm run build
+```
+
+Preview production build:
+
+```powershell
+npm run preview
+```
+
+---
+
+# Standard Folder Structure
+
+All applications progressively follow this architecture:
+
+```txt
+src/
+  components/
+  data/
+  models/
+  hooks/
+  services/
+  styles/
+  utils/
+  pages/
+  App.tsx
+  main.tsx
+```
+
+---
+
+# Understanding the React Flow
+
+One of the main goals of this repository is understanding how React actually works.
+
+React applications follow this flow:
+
+```txt
+index.html
+  contains #root
+
+main.tsx
+  finds #root
+
+ReactDOM.createRoot()
+  creates the React root
+
+<App />
+  becomes the root component
+
+Components
+  return JSX
+
+JSX
+  becomes JavaScript objects
+
+React
+  builds the component tree
+
+ReactDOM
+  updates the browser DOM
+
+Browser
+  renders final HTML
+```
+
+Understanding this flow is critical.
+
+---
+
+# What Each Core File Does
+
+| File             | Responsibility              |
+| ---------------- | --------------------------- |
+| `index.html`     | Browser HTML shell          |
+| `main.tsx`       | React entry point           |
+| `App.tsx`        | Root application component  |
+| `components/`    | Reusable UI pieces          |
+| `data/`          | Static/mock data            |
+| `models/`        | TypeScript interfaces/types |
+| `hooks/`         | Custom React hooks          |
+| `services/`      | API and business logic      |
+| `styles/`        | CSS organization            |
+| `vite.config.ts` | Vite configuration          |
+| `package.json`   | Dependencies and scripts    |
+
+---
+
+# Fluent UI Philosophy
+
+This repository uses Fluent UI as the standard visual layer.
+
+Why?
+
+Because Fluent UI provides:
+
+* accessibility
+* enterprise consistency
+* Microsoft design language
+* typography system
+* spacing system
+* enterprise-ready controls
+
+Examples of Fluent UI components used throughout the repository:
+
+* Button
+* Card
+* Input
+* Dialog
+* DataGrid
+* Avatar
+* Badge
+* Toolbar
+* TabList
+* Dropdown
+
+Official docs:
+
+* [Fluent UI React Components](https://developer.microsoft.com/en-us/fluentui?utm_source=chatgpt.com#/controls/web)
+
+---
+
+# React Learn Alignment
+
+The repository progression follows the recommended React Learn order:
+
+| React Learn Section        | Repository Focus |
+| -------------------------- | ---------------- |
+| Describing the UI          | Block 1          |
+| Adding Interactivity       | Block 2          |
+| Managing State             | Block 2          |
+| Thinking in React          | All blocks       |
+| Synchronizing with Effects | Block 4          |
+| Escape Hatches             | Block 4          |
+
+Official guide:
+
+* [React Learn](https://react.dev/learn?utm_source=chatgpt.com)
+
+---
+
+# Learning Blocks
+
+---
+
+# Block 1 — Fundamentals and UI (Apps 01–20)
+
+Focus:
+
+* JSX
+* Components
+* Props
+* Lists
+* Conditional rendering
+* Layout composition
+* Pure components
+
+Goal:
+Understand declarative UI construction.
+
+---
+
+# Block 2 — Interactivity and State (Apps 21–40)
+
+Focus:
+
+* `useState`
+* events
+* controlled forms
+* derived state
+* filtering
+* dynamic rendering
+* state modeling
+
+Goal:
+Understand how state drives the UI.
+
+---
+
+# Block 3 — Fluent UI Enterprise Components (Apps 41–60)
+
+Focus:
+
+* FluentProvider
+* themes
+* Dialogs
+* DataGrid
+* enterprise layouts
+* reusable components
+
+Goal:
+Build professional Microsoft-style interfaces.
+
+---
+
+# Block 4 — Effects and Architecture (Apps 61–80)
+
+Focus:
+
+* `useEffect`
+* API integration
+* loading/error states
+* custom hooks
+* Context API
+* reducers
+* service architecture
+
+Goal:
+Understand synchronization and scalable architecture.
+
+---
+
+# Block 5 — Complete Applications (Apps 81–100)
+
+Focus:
+
+* CRUD systems
+* dashboards
+* enterprise architecture
+* reusable systems
+* routing
+* complex UI workflows
+
+Goal:
+Build production-style enterprise React applications.
 
 ---
 
 # 100 Apps Roadmap
 
-| # | App Name | Technical Summary |
-|---|---|---|
-| 01 | Hello React Fluent | React/Vite/Fluent UI setup |
-| 02 | Profile Card | Props and component composition |
-| 03 | Product List | List rendering with map |
-| 04 | Microsoft User Card | Reusable Fluent UI cards |
-| 05 | Static Dashboard | Dashboard layout with cards |
-| 06 | Corporate Sidebar Menu | Enterprise sidebar layout |
-| 07 | Visual Task List | Pure components and task rendering |
-| 08 | Timeline Events | Vertical timeline UI |
-| 09 | Employee Table | Table rendering |
-| 10 | Email List | List layouts and spacing |
-| 11 | Grid of Cards | CSS Grid responsive layouts |
-| 12 | Image Gallery | Responsive media rendering |
-| 13 | Movie Catalog | Complex card composition |
-| 14 | Football Teams | Data-driven rendering |
-| 15 | News Page | Multi-section layouts |
-| 16 | Financial Dashboard | Enterprise metrics UI |
-| 17 | Layout Guide | Layout composition |
-| 18 | File Explorer | Hierarchical UI |
-| 19 | User Directory | Data cards and layouts |
-| 20 | Company Portal | Enterprise composition |
-| 21 | Counter | First useState introduction |
-| 22 | Toggle Theme | Dynamic UI state |
-| 23 | Calculator | State calculations |
-| 24 | Login Form | Controlled forms |
-| 25 | User Registration | Multi-field forms |
-| 26 | ToDo List | CRUD-style state |
-| 27 | Shopping List | Dynamic collections |
-| 28 | Product Filter | Derived filtered state |
-| 29 | Employee Search | Search filtering |
-| 30 | Shopping Cart | Cart state management |
-| 31 | Grade Simulator | Derived calculations |
-| 32 | Inventory Control | Data manipulation |
-| 33 | Currency Converter | Conversion logic |
-| 34 | BMI Calculator | Numeric state handling |
-| 35 | Installment Simulator | Financial calculations |
-| 36 | Voting Panel | Voting state |
-| 37 | Weather Widget | API consumption |
-| 38 | GitHub Profile Viewer | External API rendering |
-| 39 | CEP Search | Async fetch patterns |
-| 40 | Currency API Dashboard | Live API updates |
-| 41 | Notes App | Persistent local state |
-| 42 | Kanban Board | Complex component composition |
-| 43 | Modal Manager | Dialog architecture |
-| 44 | Accordion System | Expand/collapse state |
-| 45 | Tabs Navigation | Dynamic views |
-| 46 | DataGrid Explorer | Enterprise grids |
-| 47 | User CRUD | Full CRUD operations |
-| 48 | Contacts Manager | Form architecture |
-| 49 | Product Dashboard | Metrics and filters |
-| 50 | Expense Tracker | Financial state |
-| 51 | Task Manager | Advanced task workflows |
-| 52 | Habit Tracker | Daily state persistence |
-| 53 | Pomodoro Timer | Timers and effects |
-| 54 | Stopwatch | useEffect timing |
-| 55 | Countdown App | Cleanup patterns |
-| 56 | Theme Manager | Context introduction |
-| 57 | Multi-Step Form | Complex forms |
-| 58 | Authentication UI | Login flow |
-| 59 | Dashboard Routing | React Router basics |
-| 60 | Navigation Shell | Enterprise routing |
-| 61 | API Service Layer | Services architecture |
-| 62 | Custom Hooks Intro | Hook abstraction |
-| 63 | useReducer App | Reducer architecture |
-| 64 | Form Validation | Validation patterns |
-| 65 | Data Fetching Hook | Async hooks |
-| 66 | Infinite Scroll | Dynamic loading |
-| 67 | Pagination System | Data paging |
-| 68 | Search Dashboard | Search architecture |
-| 69 | Chart Dashboard | Visualization UI |
-| 70 | Responsive Admin | Responsive enterprise UI |
-| 71 | Notification Center | Toast architecture |
-| 72 | File Upload UI | Upload workflows |
-| 73 | Profile Settings | Configuration pages |
-| 74 | Theme Switcher | Dynamic themes |
-| 75 | Dark Mode Dashboard | Fluent theming |
-| 76 | Teams Dashboard | Multi-section dashboards |
-| 77 | CRM Layout | Enterprise architecture |
-| 78 | ERP Navigation | Large-scale layout |
-| 79 | SharePoint Style Portal | Microsoft-inspired UI |
-| 80 | Analytics Dashboard | KPI visualization |
-| 81 | User Permissions UI | Role rendering |
-| 82 | Dynamic Sidebar | Navigation systems |
-| 83 | Data Visualization Hub | Dashboard composition |
-| 84 | Enterprise Forms | Complex forms |
-| 85 | Audit Log Viewer | Large datasets |
-| 86 | API Monitoring Panel | Real-time UI |
-| 87 | Workflow Dashboard | Process visualization |
-| 88 | Notification Dashboard | Event-driven UI |
-| 89 | Teams Workspace | Workspace architecture |
-| 90 | Enterprise Search | Global search |
-| 91 | AI Prompt Dashboard | AI workflow UI |
-| 92 | Copilot Style Interface | Assistant layouts |
-| 93 | React Architecture Lab | Advanced structure |
-| 94 | Hook Patterns Lab | Hook design |
-| 95 | Fluent UI Advanced | Advanced Fluent components |
-| 96 | Enterprise DataGrid | Complex grids |
-| 97 | Performance Lab | Optimization patterns |
-| 98 | React Testing Lab | Testing fundamentals |
-| 99 | Production Dashboard | Production-grade architecture |
-| 100 | Final Enterprise Portal | Complete enterprise application |
+| #  | App                    | Technical Focus           |
+| -- | ---------------------- | ------------------------- |
+| 01 | Hello React Fluent     | Vite + React + Fluent UI  |
+| 02 | Profile Card           | Props and composition     |
+| 03 | Product List           | List rendering            |
+| 04 | Microsoft User Card    | Reusable enterprise cards |
+| 05 | Static Dashboard       | Layout systems            |
+| 06 | Corporate Sidebar Menu | Enterprise layout         |
+| 07 | Visual Task List       | Pure components           |
+| 08 | Timeline Events        | Sequential rendering      |
+| 09 | Employee Table         | Table layouts             |
+| 10 | Email List             | List composition          |
+| 11 | Grid of Cards          | CSS Grid                  |
+| 12 | Image Gallery          | Responsive rendering      |
+| 13 | Movie Catalog          | Complex composition       |
+| 14 | Football Teams         | Data-driven UI            |
+| 15 | News Page              | Multi-section layouts     |
+| 16 | Financial Dashboard    | Enterprise metrics        |
+| 17 | SharePoint Layout      | Microsoft-inspired UI     |
+| 18 | File Explorer          | Hierarchical rendering    |
+| 19 | Corporate Portal       | Enterprise composition    |
+| 20 | Microsoft Landing Page | Advanced layouts          |
 
 ---
 
-# Official References
+# Project Philosophy
 
-- https://react.dev/learn
-- https://developer.microsoft.com/en-us/fluentui#/controls/web
-- https://vite.dev/guide/
-- https://www.typescriptlang.org/docs/
+This repository is intentionally repetitive.
+
+Repetition is critical because React mastery comes from repeatedly practicing:
+
+* rendering
+* composition
+* state modeling
+* JSX thinking
+* component organization
+* architecture
+
+The objective is to make React patterns become natural.
+
+---
+
+# Enterprise Focus
+
+The repository strongly emphasizes enterprise React architecture inspired by:
+
+* Microsoft ecosystem
+* SharePoint-style layouts
+* dashboard systems
+* admin portals
+* enterprise navigation
+* Fluent UI design language
+
+The final goal is to prepare for:
+
+* enterprise React development
+* admin systems
+* dashboards
+* SPFx
+* Microsoft 365 UI ecosystems
+* scalable frontend architecture
+
+---
+
+# What You Will Learn
+
+By completing all 100 apps, the developer should understand:
+
+* modern React architecture
+* component composition
+* state-driven UI
+* Fluent UI ecosystem
+* TypeScript architecture
+* rendering flow
+* hooks
+* effects
+* Context API
+* reducers
+* reusable systems
+* API integration
+* enterprise layouts
+* scalable React organization
 
 ---
 
 # Final Philosophy
 
+The ultimate goal is to reach the point where:
+
 ```txt
 Idea
-→ Component architecture
 → State model
+→ Component architecture
 → UI composition
 → Fluent UI integration
 → Production-ready React application
 ```
 
+becomes a natural development process.
+
 This repository is not about memorizing React.
 
 It is about internalizing React.
+
+---
+
+# Official Documentation
+
+| Topic           | Documentation                                                                                                                                        |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| React Learn     | [https://react.dev/learn](https://react.dev/learn)                                                                                                   |
+| React Reference | [https://react.dev/reference/react](https://react.dev/reference/react)                                                                               |
+| Fluent UI       | [https://developer.microsoft.com/en-us/fluentui#/controls/web](https://developer.microsoft.com/en-us/fluentui#/controls/web)                         |
+| Vite            | [https://vite.dev/guide/](https://vite.dev/guide/)                                                                                                   |
+| TypeScript      | [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)                                                                         |
+| ESLint          | [https://eslint.org/docs/latest/](https://eslint.org/docs/latest/)                                                                                   |
+| MDN Flexbox     | [https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout) |
+| MDN Grid        | [https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout)                 |
+
+---
+
+# Current Progress
+
+| Block       | Apps              |
+| ----------- | ----------------- |
+| Block 1     | 01–20             |
+| Block 2     | 21–40             |
+| Current App | 39 — Team Manager |
