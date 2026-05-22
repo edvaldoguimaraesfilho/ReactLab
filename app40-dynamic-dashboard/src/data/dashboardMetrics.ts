@@ -1,0 +1,58 @@
+import type { DashboardMetric } from "../models/DashboardMetric";
+
+export const dashboardMetrics: DashboardMetric[] = [
+  {
+    id: 1,
+    title: "Revenue",
+    department: "Sales",
+    month: "January",
+    value: 125000,
+    target: 100000,
+    unit: "$",
+  },
+  {
+    id: 2,
+    title: "Expenses",
+    department: "Finance",
+    month: "January",
+    value: 68000,
+    target: 75000,
+    unit: "$",
+  },
+  {
+    id: 3,
+    title: "Open Tickets",
+    department: "Technology",
+    month: "January",
+    value: 34,
+    target: 25,
+    unit: "",
+  },
+  {
+    id: 4,
+    title: "Completed Orders",
+    department: "Operations",
+    month: "January",
+    value: 420,
+    target: 400,
+    unit: "",
+  },
+  {
+    id: 5,
+    title: "Revenue",
+    department: "Sales",
+    month: "February",
+    value: 98000,
+    target: 110000,
+    unit: "$",
+  },
+  {
+    id: 6,
+    title: "Open Tickets",
+    department: "Technology",
+    month: "February",
+    value: 19,
+    target: 25,
+    unit: "",
+  },
+];
