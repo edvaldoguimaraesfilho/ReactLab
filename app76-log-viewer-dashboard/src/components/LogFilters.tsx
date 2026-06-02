@@ -1,34 +1,38 @@
-import { Dropdown, Option } from "@fluentui/react-components";
+import {
+  Dropdown,
+  Option,
+  type OptionOnSelectData,
+  type SelectionEvents,
+} from "@fluentui/react-components";
 
-interface Props {
-  value: string;
-  onChange: (value: string) => void;
+import type { LogLevel } from "../models/LogEntry";
+
+export type SeverityFilter = "All" | LogLevel;
+
+interface LogFiltersProps {
+  value: SeverityFilter;
+  onChange: (value: SeverityFilter) => void;
 }
 
-export function LogFilters({
-  value,
-  onChange,
-}: Props) {
+export function LogFilters({ value, onChange }: LogFiltersProps) {
+  function handleSelect(
+    _event: SelectionEvents,
+    data: OptionOnSelectData
+  ) {
+    onChange(data.optionValue as SeverityFilter);
+  }
+
   return (
     <Dropdown
       value={value}
+      selectedOptions={[value]}
+      onOptionSelect={handleSelect}
       placeholder="Select severity"
     >
-      <Option onClick={() => onChange("All")}>
-        All
-      </Option>
-
-      <Option onClick={() => onChange("Info")}>
-        Info
-      </Option>
-
-      <Option onClick={() => onChange("Warning")}>
-        Warning
-      </Option>
-
-      <Option onClick={() => onChange("Error")}>
-        Error
-      </Option>
+      <Option value="All">All</Option>
+      <Option value="Info">Info</Option>
+      <Option value="Warning">Warning</Option>
+      <Option value="Error">Error</Option>
     </Dropdown>
   );
 }

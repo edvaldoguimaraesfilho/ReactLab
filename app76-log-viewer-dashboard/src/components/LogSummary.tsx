@@ -1,23 +1,26 @@
 import { Card, Text, Title3 } from "@fluentui/react-components";
-import { LogEntry } from "../models/LogEntry";
+import type { LogEntry } from "../models/LogEntry";
 
-interface Props {
+interface LogSummaryProps {
   logs: LogEntry[];
 }
 
-export function LogSummary({ logs }: Props) {
-  const errors = logs.filter(x => x.level === "Error").length;
-  const warnings = logs.filter(x => x.level === "Warning").length;
+export function LogSummary({ logs }: LogSummaryProps) {
+  const total = logs.length;
+  const info = logs.filter((log) => log.level === "Info").length;
+  const warnings = logs.filter((log) => log.level === "Warning").length;
+  const errors = logs.filter((log) => log.level === "Error").length;
 
   return (
-    <Card>
+    <Card className="summary-card">
       <Title3>System Overview</Title3>
 
-      <Text>Total Logs: {logs.length}</Text>
-      <br />
-      <Text>Warnings: {warnings}</Text>
-      <br />
-      <Text>Errors: {errors}</Text>
+      <div className="summary-grid">
+        <Text>Total Logs: {total}</Text>
+        <Text>Info: {info}</Text>
+        <Text>Warnings: {warnings}</Text>
+        <Text>Errors: {errors}</Text>
+      </div>
     </Card>
   );
 }

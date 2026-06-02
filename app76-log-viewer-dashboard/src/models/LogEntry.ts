@@ -1,7 +1,9 @@
+export type LogLevel = "Info" | "Warning" | "Error";
+
 export interface LogEntry {
   id: number;
   timestamp: string;
-  level: "Info" | "Warning" | "Error";
+  level: LogLevel;
   source: string;
   message: string;
 }

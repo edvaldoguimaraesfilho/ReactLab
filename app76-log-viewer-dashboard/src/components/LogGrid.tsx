@@ -6,15 +6,16 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
+  Badge,
 } from "@fluentui/react-components";
 
-import { LogEntry } from "../models/LogEntry";
+import type { LogEntry } from "../models/LogEntry";
 
-interface Props {
+interface LogGridProps {
   logs: LogEntry[];
 }
 
-export function LogGrid({ logs }: Props) {
+export function LogGrid({ logs }: LogGridProps) {
   return (
     <Card>
       <Table>
@@ -28,10 +29,12 @@ export function LogGrid({ logs }: Props) {
         </TableHeader>
 
         <TableBody>
-          {logs.map(log => (
+          {logs.map((log) => (
             <TableRow key={log.id}>
               <TableCell>{log.timestamp}</TableCell>
-              <TableCell>{log.level}</TableCell>
+              <TableCell>
+                <Badge appearance="filled">{log.level}</Badge>
+              </TableCell>
               <TableCell>{log.source}</TableCell>
               <TableCell>{log.message}</TableCell>
             </TableRow>
